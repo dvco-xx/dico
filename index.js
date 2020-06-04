@@ -622,17 +622,148 @@ console.log(selectedColors); */
 //--------------------------------------------------------------------------------------------------------------------------------------
 //ARRAY MANIPULATION - ADDING, REMOVING, EMPTYING AND CONCATENATING ARRAYS
 //--------------------------------------------------------------------------------------------------------------------------------------
-const numbers = [3, 4];
-//End
-numbers.push(5, 6);
-//first
-numbers.unshift(1, 2);
-//middle
-numbers.splice(2, 0, "a", "b", 1);
+// let numbers = [3, 4]; //initialize array
+//Add elements to END of an array
+// numbers.push(5, 6);
+//Add elements to BEGINNING of an array
+// numbers.unshift(1, 2);
+// let isEligible = true;
+//Add elements to MIDDLE
+// numbers.slice(2, 0, isEligible, "a", "b", 1);
+
 // console.log(numbers);
-console.log(numbers.indexOf("1")); //returns -1 since "1" is not in array
-console.log(numbers.lastIndexOf(1)); //output = 5
-console.log(numbers.indexOf(1) !== -1); //if 1 is not found in array
-// for (let key in numbers) {
-//   console.log(key, numbers[key]);
+
+//remove LAST element in array
+// numbers.pop();
+// console.log(numbers);
+//remove FIRST element in array
+// numbers.shift();
+// console.log(numbers);
+//remove from MIDDLE of array
+// numbers.splice(1, 2); //accepts arguments: starting index and no. of elements to delete from starting index
+// console.log(numbers);
+
+//-------Emptying an array-----------
+// let another = numbers; //first re-assign/point address of new variable to old array locations then...
+//Solution 1 - deletes array numbers permanently if no other references are made to it
+// numbers = [];
+//console.log(another); //display previously deleted numbers array
+//Solution 2 (Recommended) ---
+//numbers.length = 0; //Re-initialize array length to 0
+//Solution 3 ---
+//numbers.splice(0, numbers.length);  //Using .splice() method
+//Solution 4 (Not recommended) ---
+// while (numbers.length > 0){
+//   numbers.pop();  //Using .pop() inside a loop
 // }
+
+// //---Finding elements in array (Primitives/value types) -------
+// console.log(numbers.lastIndexOf(1)); //output = 4. Outputs -1 if value isn't present in array
+// console.log(numbers.indexOf(1) !== -1); //checks if a given element (1) is present in array. If it evaluates to 'true', then value is present
+// console.log(numbers.includes(1, 2)); //same as above but easier cleaner method.
+/**All the above methods also take 2nd argument "fromIndex" that accepts a value that signifies the memory address where the search should begin*/
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------Finding elements in array (Reference Types e.g objects, functions can only be achieved through...)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// const courses = [
+//   { id: 1, name: "a" },
+//   { id: 2, name: "b" },
+// ];
+//...the use of a predicate or callback function that loops through each array location
+//until it gets to the FIRST element/value that satisfies its condition
+//courses.findIndex(function(courses){}); will return index of element
+// const course = courses.find(function (course) {
+//   return course.name === "a";
+// });
+// console.log(course); //If index is not found, -1 is returned
+
+//------Using newer ES6 'Arrow Function' alternative-------------
+//*pass empty brackets (e.g find(() if no argument exists
+// const course = courses.find(course => course.name === "a");
+// console.log(course);
+
+//-----Combining (.concat) and slicing (.slice) an array------------
+// const first = [1, 2, 3, { id: 5 }];
+// const second = [4, 5, 6];
+
+// const combined = first.concat(second);
+// first[3].id = 16;
+//Method 1 of using slice method
+// const sliced = combined.slice(3, 6); //removes everything before starting index (3). Stops after given finishing index
+//Method 2// const sliced = combined.slice(3); //display from starting index till end of array
+//Method 3// const sliced = combined.slice(); //replicates array
+// console.log(combined);
+// console.log(sliced);
+//NOTE: When copying array of objects, only their references/address are copied.
+//Any change made to object values/properties are affected in original array
+
+//Cleaner ES6 alternative - copying using the spread operator
+//--------------------------------------------------------------------------------------------------------------------------------------
+//const combined2 = [...first, 'a', ...second, 'b'];
+
+//ITERATING through an array using FOR EACH method + arrow function
+// const numbers = [1, 2, 3];
+// numbers.forEach((number, index) => console.log(index, number));
+
+//JOINING elements of an array using join method
+//Useful when creating a URL slug
+// const joined = numbers.join(",");
+//mETHOD 2- using split method + join
+// const message = "This is my message";
+// const parts = message.split(" ");
+// const joined2 = parts.join("-");
+// console.log(joined2);
+
+//SORTING ELEMENTS IN AN ARRAY
+//Useful for when you have disordered array containing multiple data-types e.g strings and numbers
+// const numbers = [1, 5, 2, 4, 3];
+// numbers.sort();
+// console.log(numbers);
+// numbers.reverse();
+// console.log(numbers);
+
+//sorting an array of string objects
+//a < b => -1
+//a > b => 1
+//a == b => 0
+// const courses = [
+//   { id: 1, name: "Node.js" },
+//   { id: 2, name: "JavaScript" },
+// ];
+
+// courses.sort(function (a, b) {
+//   //first convert strings to same case before sorting based on ascending ascii values.
+//   const nameA = a.name.toLowerCase();
+//   const nameB = b.name.toLowerCase();
+
+//   //compares each string value against their corresponding numeric value on ascii table
+//   //and sort/returns true or false depending on given condition
+//   if (nameA < nameB) return -1;
+//   if (nameA > nameB) return 1;
+//   return 0;
+// });
+// console.log(courses);
+
+//TESTING ELEMENTS IN AN ARRAY using .every() and .some()
+//Check if array contains all positive elements
+// const numbers = [1, 2, 3, 4];
+
+// const allPositives = numbers.every(function (value) {
+//   return value >= 0;
+// });
+// console.log(allPositives);
+//cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array that satisfies the given condition
+//which in this case is the occurrence of at least one positive value
+// const atLeastOnePositive = numbers.some((value) => value >= 0);
+// console.log(atLeastOnePositive);
+
+//FILTERING AN ARRAY (Based on search criteria)
+//Filter the following array to return only positive numeric values/elements
+// const numbers = [1, -1, 2, 3];
+// const filtered = numbers.filter(function (value) {
+//   return value > 0;
+// });
+//using cleaner arrow function notation
+const filtered = numbers.filter((n) => n < 0);
+console.log(filtered);
