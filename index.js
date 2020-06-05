@@ -753,14 +753,14 @@ console.log(selectedColors); */
 //   return value >= 0;
 // });
 // console.log(allPositives);
-//cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array that satisfies the given condition
-//which in this case is the occurrence of at least one positive value
+// cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array
+// that satisfies the given condition which in this case is the occurrence of at least one positive value
 // const atLeastOnePositive = numbers.some((value) => value >= 0);
 // console.log(atLeastOnePositive);
 
 //FILTERING AN ARRAY (Based on search criteria)
 //Filter the following array to return only positive numeric values/elements
-// const numbers = [1, -1, 2, 3];
+const numbers = [1, -1, 2, 3];
 // const filtered = numbers.filter(function (value) {
 //   return value > 0;
 // });
