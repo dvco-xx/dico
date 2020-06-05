@@ -670,7 +670,7 @@ console.log(selectedColors); */
 //   { id: 1, name: "a" },
 //   { id: 2, name: "b" },
 // ];
-//...the use of a predicate or callback function that loops through each array location until it gets
+// ...the use of a predicate or callback function that loops through each array location until it gets
 // to the FIRST element/value that satisfies its condition
 // *Note: courses.findIndex(function(courses){}); will return index of element
 
@@ -679,56 +679,63 @@ console.log(selectedColors); */
 // });
 // console.log(course); //If index is not found, -1 is returned
 
-//------Using newer ES6 'Arrow Function' alternative-------------
+// Using newer ES6 'Arrow Function' alternative
 // *pass empty brackets (e.g find(() if no other arguments exist
 // const course = courses.find(course => course.name === "a");
 // console.log(course);
 
-//-----Combining (.concat) and slicing (.slice) an array------------
+//Combining (.concat()) and slicing (.slice()) an array
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // const first = [1, 2, 3, { id: 5 }];
 // const second = [4, 5, 6];
 
 // const combined = first.concat(second);
 // first[3].id = 16;
-//Method 1 of using slice method
+// Method 1 of using the .slice() method
 // const sliced = combined.slice(3, 6); //removes everything before starting index (3). Stops after given finishing index
-//Method 2// const sliced = combined.slice(3); //display from starting index till end of array
-//Method 3// const sliced = combined.slice(); //replicates array
+// Method 2
+// const sliced = combined.slice(3); //display from starting index till end of array
+// Method 3
+// const sliced = combined.slice(); //replicates array
 // console.log(combined);
 // console.log(sliced);
-//NOTE: When copying array of objects, only their references/address are copied.
-//Any change made to object values/properties are affected in original array
+//* NOTE: When copying array of objects, only their references/address are copied.
+// Any change made to object values/properties are affected in original array
 
-//Cleaner ES6 alternative - copying using the spread operator
+// Copying/Duplicating an array using the "spread" operator - (recommended)
 //--------------------------------------------------------------------------------------------------------------------------------------
 //const combined2 = [...first, 'a', ...second, 'b'];
 
-//ITERATING through an array using FOR EACH method + arrow function
+// ITERATING through an array using the .forEach() method
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // const numbers = [1, 2, 3];
 // numbers.forEach((number, index) => console.log(index, number));
 
-//JOINING elements of an array using join method
+// JOINING elements of an array using the .join() method
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Useful when creating a URL slug
 // const joined = numbers.join(",");
-//mETHOD 2- using split method + join
+
+// METHOD 2- Using the split( and .join() methods
 // const message = "This is my message";
 // const parts = message.split(" ");
 // const joined2 = parts.join("-");
 // console.log(joined2);
 
-//SORTING ELEMENTS IN AN ARRAY
-//Useful for when you have disordered array containing multiple data-types e.g strings and numbers
+// SORTING ELEMENTS IN AN ARRAY
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Useful for when you have disordered array containing all sorts of data-types e.g strings and numbers
 // const numbers = [1, 5, 2, 4, 3];
 // numbers.sort();
 // console.log(numbers);
 // numbers.reverse();
 // console.log(numbers);
 
-//sorting an array of string objects
-//Instructions, if:
-//a < b => -1
-//a > b => 1
-//a == b => 0
+// Sorting an array of string objects
+// Instructions, if:
+// a < b return  -1
+// a > b return 1
+// a == b return 0
 
 // const courses = [
 //   { id: 1, name: "Node.js" },
@@ -741,35 +748,38 @@ console.log(selectedColors); */
 //   const nameB = b.name.toLowerCase();
 
 //   //compares each string value against their corresponding numeric value on ascii table
-//   //and sort/returns true or false depending on given condition
+//   //and sort/returns true or false depending on given if condition
 //   if (nameA < nameB) return -1;
 //   if (nameA > nameB) return 1;
 //   return 0;
 // });
 // console.log(courses);
 
-//TESTING ELEMENTS IN AN ARRAY using .every() and .some()
-//Check if array contains all positive elements
+// TESTING ELEMENTS IN AN ARRAY using .every() and .some()
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Check if array contains all positive elements
 // const numbers = [1, 2, 3, 4];
 
 // const allPositives = numbers.every(function (value) {
 //   return value >= 0;
 // });
 // console.log(allPositives);
-//cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array that satisfies the given condition
-//which in this case is the occurrence of at least one positive value
+
+// cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array that satisfies the given condition
+// which in this case is the occurrence of at least one positive value
 // const atLeastOnePositive = numbers.some((value) => value >= 0);
 // console.log(atLeastOnePositive);
 
-//FILTERING AN ARRAY (Based on search criteria)
-//Filter the following array to return only positive numeric values/elements
+// FILTERING AN ARRAY (Based on search criteria)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Filter the following array to return only positive numeric values/elements
 // const numbers = [1, -1, 2, 3];
-//using predicate/callback function (outdated: do NOT recommend)
+// using predicate/callback function (outdated: do NOT recommend)
 // const filtered = numbers.filter(function (value) {
 //   return value > 0;
 // });
 
-//using cleaner, shorter arrow function notation (recommended)
+// Using cleaner, shorter arrow function notation (recommended)
 // const filtered = numbers.filter((n) => n >= 0);
 
 // MAPPING AN ARRAY OF PRIMITIVE VALUES
@@ -782,8 +792,8 @@ console.log(selectedColors); */
 // const items = filtered.map((n) => ({ value: n }));
 // console.log(html);
 
-// exemplifying chaining with the aid of above example both .filter()
-// and .map() return new arrays therefore chaining can be carried out
+// exemplifying chaining with the aid of above example. Both .filter() and .map() methods return
+// totally new arrays, making it possible to execute the continuous "chaining" of other methods
 // const items = numbers
 //   .filter((n) => n >= 0)
 //   .map((n) => ({ value: n }))
@@ -791,8 +801,9 @@ console.log(selectedColors); */
 //   .map((obj) => obj.value);
 // console.log(items);
 
-//REDUCING AN ARRAY using .reduce() method that reduces all elements of an array into a single value (can be string, object etc)
-//----How .reduce() works-----
+// REDUCING AN ARRAY using .reduce() method that reduces all elements of an array into a single value (can be string, object etc)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----How the .reduce() works-----
 // let accumulator = a and currentValue = c
 // a = 0, c = 1 => a = 1
 // a = 1, c = 2 => a = 3
@@ -824,3 +835,81 @@ console.log(selectedColors); */
 //   for (let i of array) if (n === i) return true;
 //   return false;
 // }
+
+// EXERCISE - Implement a function that accepts an_array and elements of an_array,...
+// ...and returns an_array excluding excluding elements of an_array
+// const numbers = [1, 2, 3, 4, 5, 1, 1, 8];
+// const output = except(numbers, [1, 5]);
+// console.log(output);
+
+// function except(array, exclude) {
+//   const another = [];
+//   for (let i of array) if (!exclude.includes(i)) another.push(i);
+//   return another;
+// }
+
+//EXERCISE - Move element to a certain position within an array *difficult
+// const numbers = [1, 2, 3, 4, 5];
+// const output = move(numbers, 1, 4);
+
+// console.log(output);
+
+// function move(array, index, offset) {
+//   const position = index + offset;
+//   if (position >= array.length || position < 0) {
+//     console.error("Invalid offset!");
+//     return;
+//   }
+
+//   const another = [...array];
+//   const element = another.splice(index, 1)[0];
+//   another.splice(position, 0, element);
+//   return another;
+// }
+
+// EXERCISE - Count occurrences using .reduce() method
+// const numbers = [1, 2, 3, 4, 1];
+// const output = countOccurrences(numbers, 1);
+
+// console.log(output);
+
+// function countOccurrences(array, searchElement) {
+//   return array.reduce((accumulator, current) => {
+//     const occurrences = searchElement === current ? 0 : 1;
+//     return accumulator + occurrences;
+//   }, 0);
+// }
+
+//EXERCISE - Get Max element from an array
+// const numbers = [1, 2, 3, 4, 5];
+// const output = getMax(numbers);
+// console.log(output);
+
+// function getMax(array) {
+//   if (array.length === 0) return undefined;
+//   return array.reduce((a, b) => (a > b ? a : b));
+
+// Alternatively...(not recommended)
+//   let max = array[0];
+//   for (let i = 1; i <= array.length; i++) if (array[i] > max) max = array[i];
+//   return max;
+//}
+
+const movies = [
+  { title: "a", year: 2018, rating: 4.5 },
+  { title: "b", year: 2018, rating: 4.7 },
+  { title: "c", year: 2018, rating: 3 },
+  { title: "d", year: 2017, rating: 4.5 },
+];
+//get all movies in 2018 rating > 4
+// sort by rating in descending order
+//display title only
+//output -> b, a
+
+const filtered = movies
+  .filter((m) => m.year === 2018 && m.rating >= 4)
+  .sort((a, b) => a.rating - b.rating) //return 1 if a > b, -1 if a< b and 0 if a === b
+  .reverse()
+  .map((m) => m.title);
+
+console.log(filtered);
