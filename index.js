@@ -107,14 +107,14 @@ console.log(selectedColors); */
 //--------------------------------------------------------------------------------------------------------------------------------------
 // Exercise -- "Greetings"
 //--------------------------------------------------------------------------------------------------------------------------------------
-// let timeinHour = 21;
+// let timeInHour = 21;
 
-// if (timeinHour >= 6 && timeinHour < 12) console.log("Good morning!");
-// else if (timeinHour >= 12 && timeinHour < 18) console.log("Good afternoon!");
+// if (timeInHour >= 6 && timeInHour < 12) console.log("Good morning!");
+// else if (timeInHour >= 12 && timeInHour < 18) console.log("Good afternoon!");
 // else console.log("Good Evening!");
 
 //--------------------------------------------------------------------------------------------------------------------------------------
-// USNG SWITCH CASE
+// USING SWITCH CASE
 //--------------------------------------------------------------------------------------------------------------------------------------
 // let role = "guest";
 
@@ -157,7 +157,7 @@ console.log(selectedColors); */
 // };
 // for (let key in person) console.log(key, person[key]);
 
-//Using FOR IN LOOP to dsplay elements of an array
+//Using FOR IN LOOP to display elements of an array
 // const colors = ["red", "yellow", "black"];
 // for (let key in colors) console.log(colors.key);
 
@@ -533,8 +533,8 @@ console.log(selectedColors); */
 //   this.city = city;
 //   this.zipCode = zipCode;
 // }
-// const address1 = new ShowAddress("17 Goodluck", "Lagos", 1234);
-// const address2 = new ShowAddress("17 Goodluck", "Lagos", 1234);
+// const address1 = new ShowAddress("17 Good-luck", "Lagos", 1234);
+// const address2 = new ShowAddress("17 Good-luck", "Lagos", 1234);
 // const address3 = address1; //both these object's are referencing the same object in memory
 // //console.log(address);
 
@@ -633,14 +633,14 @@ console.log(selectedColors); */
 
 // console.log(numbers);
 
-//remove LAST element in array
+//removes LAST element in array
 // numbers.pop();
 // console.log(numbers);
-//remove FIRST element in array
+//removes FIRST element in array
 // numbers.shift();
 // console.log(numbers);
-//remove from MIDDLE of array
-// numbers.splice(1, 2); //accepts arguments: starting index and no. of elements to delete from starting index
+//removes from MIDDLE of array
+// numbers.splice(1, 2); //accepts 2 arguments: starting index and stopping index
 // console.log(numbers);
 
 //-------Emptying an array-----------
@@ -664,22 +664,23 @@ console.log(selectedColors); */
 /**All the above methods also take 2nd argument "fromIndex" that accepts a value that signifies the memory address where the search should begin*/
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//------Finding elements in array (Reference Types e.g objects, functions can only be achieved through...)
+// Finding elements in array containing reference types (e.g objects, functions) can only be achieved through...)
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // const courses = [
 //   { id: 1, name: "a" },
 //   { id: 2, name: "b" },
 // ];
-//...the use of a predicate or callback function that loops through each array location
-//until it gets to the FIRST element/value that satisfies its condition
-//courses.findIndex(function(courses){}); will return index of element
+//...the use of a predicate or callback function that loops through each array location until it gets
+// to the FIRST element/value that satisfies its condition
+// *Note: courses.findIndex(function(courses){}); will return index of element
+
 // const course = courses.find(function (course) {
 //   return course.name === "a";
 // });
 // console.log(course); //If index is not found, -1 is returned
 
 //------Using newer ES6 'Arrow Function' alternative-------------
-//*pass empty brackets (e.g find(() if no argument exists
+// *pass empty brackets (e.g find(() if no other arguments exist
 // const course = courses.find(course => course.name === "a");
 // console.log(course);
 
@@ -707,7 +708,7 @@ console.log(selectedColors); */
 // numbers.forEach((number, index) => console.log(index, number));
 
 //JOINING elements of an array using join method
-//Useful when creating a URL slug
+// Useful when creating a URL slug
 // const joined = numbers.join(",");
 //mETHOD 2- using split method + join
 // const message = "This is my message";
@@ -724,9 +725,11 @@ console.log(selectedColors); */
 // console.log(numbers);
 
 //sorting an array of string objects
+//Instructions, if:
 //a < b => -1
 //a > b => 1
 //a == b => 0
+
 // const courses = [
 //   { id: 1, name: "Node.js" },
 //   { id: 2, name: "JavaScript" },
@@ -753,17 +756,71 @@ console.log(selectedColors); */
 //   return value >= 0;
 // });
 // console.log(allPositives);
-// cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array
-// that satisfies the given condition which in this case is the occurrence of at least one positive value
+//cleaner Arrow Function alternative - .some() is used here to check if there exists at least one element in the array that satisfies the given condition
+//which in this case is the occurrence of at least one positive value
 // const atLeastOnePositive = numbers.some((value) => value >= 0);
 // console.log(atLeastOnePositive);
 
 //FILTERING AN ARRAY (Based on search criteria)
 //Filter the following array to return only positive numeric values/elements
-const numbers = [1, -1, 2, 3];
+// const numbers = [1, -1, 2, 3];
+//using predicate/callback function (outdated: do NOT recommend)
 // const filtered = numbers.filter(function (value) {
 //   return value > 0;
 // });
-//using cleaner arrow function notation
-const filtered = numbers.filter((n) => n < 0);
-console.log(filtered);
+
+//using cleaner, shorter arrow function notation (recommended)
+// const filtered = numbers.filter((n) => n >= 0);
+
+// MAPPING AN ARRAY OF PRIMITIVE VALUES
+// map filtered array elements to create html markup
+// const items = filtered.map((n) => "<li>" + n + "</li>");
+// const html = "<ul>" + items.join(" ") + "</ul>"; // overrides array default separator
+// console.log(html);
+
+// mapping results of previously filtered primitive array elements to object with property "value" (more useful with real world instances)
+// const items = filtered.map((n) => ({ value: n }));
+// console.log(html);
+
+// exemplifying chaining with the aid of above example both .filter()
+// and .map() return new arrays therefore chaining can be carried out
+// const items = numbers
+//   .filter((n) => n >= 0)
+//   .map((n) => ({ value: n }))
+//   .filter((obj) => obj.value > 1)
+//   .map((obj) => obj.value);
+// console.log(items);
+
+//REDUCING AN ARRAY using .reduce() method that reduces all elements of an array into a single value (can be string, object etc)
+//----How .reduce() works-----
+// let accumulator = a and currentValue = c
+// a = 0, c = 1 => a = 1
+// a = 1, c = 2 => a = 3
+// a = 3, c = 3 => a = 6
+// a = 6, c = 4 => a = 10
+// a = 10, c = 5 => a = 15
+// *NOTE: If accumulator isn't initialized to 0 at start of reduce operation then the first array element will be assigned instead
+// const numbers = [1, 2, 3, 4, 5];
+// const sum = numbers.reduce(
+//   (accumulator, currentValue) => (accumulator += currentValue)
+// );
+// console.log(sum);
+
+// EXERCISE - Define a function that accepts 2 parameters (min, max) and displays all numbers within that range as an array
+// const numbers = arrayFromRange(-1, 4);
+// console.log(numbers);
+
+// function arrayFromRange(min, max) {
+//   const a = [];
+//   for (let i = min; i <= max; i++) a.push(i);
+//   return a;
+// }
+
+// EXERCISE - Implement a function similar to the .includes() array method
+// const numbers = [1, 2, 3, 4, 5];
+// console.log(includes(numbers, 5));
+
+// function includes(array, n) {
+//   for (let i of array) if (n === i) return true;
+//   return false;
+// }
