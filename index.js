@@ -867,35 +867,36 @@ console.log(selectedColors); */
 //   return another;
 // }
 
-// EXERCISE - Count occurrences using .reduce() method
-// const numbers = [1, 2, 3, 4, 1];
-// const output = countOccurrences(numbers, 1);
+/* // EXERCISE - Count occurrences using .reduce() method
+const numbers = [1, 2, 3, 4, 1];
+const output = countOccurrences(numbers, 1);
 
-// console.log(output);
+console.log(output);
 
-// function countOccurrences(array, searchElement) {
-//   return array.reduce((accumulator, current) => {
-//     const occurrences = searchElement === current ? 0 : 1;
-//     return accumulator + occurrences;
-//   }, 0);
-// }
+function countOccurrences(array, searchElement) {
+  return array.reduce((accumulator, current) => {
+    const occurrences = searchElement === current ? 0 : 1;
+    return accumulator + occurrences;
+  }, 0);
+}*/
 
-//EXERCISE - Get Max element from an array
-// const numbers = [1, 2, 3, 4, 5];
-// const output = getMax(numbers);
-// console.log(output);
+// EXERCISE - Get Max element from an array using function
+/* const numbers = [1, 2, 3, 4, 5];
+const output = getMax(numbers);
+console.log(output);
 
-// function getMax(array) {
-//   if (array.length === 0) return undefined;
-//   return array.reduce((a, b) => (a > b ? a : b));
+function getMax(array) {
+  if (array.length === 0) return undefined;
+  return array.reduce((a, b) => (a > b ? a : b));
 
-// Alternatively...(not recommended)
-//   let max = array[0];
-//   for (let i = 1; i <= array.length; i++) if (array[i] > max) max = array[i];
-//   return max;
-//}
+//Alternatively...(not recommended)
+  let max = array[0];
+  for (let i = 1; i <= array.length; i++) if (array[i] > max) max = array[i];
+  return max;
+} */
 
-const movies = [
+// EXERCISE - Sort an array of movie objects to display only movie titles with rating > 4 produced in 2018
+/* const movies = [
   { title: "a", year: 2018, rating: 4.5 },
   { title: "b", year: 2018, rating: 4.7 },
   { title: "c", year: 2018, rating: 3 },
@@ -912,4 +913,19 @@ const filtered = movies
   .reverse()
   .map((m) => m.title);
 
-console.log(filtered);
+console.log(filtered); */
+
+//--------------------------------------------------------------------------------------------------------------------------------------
+//          FUNCTIONS
+//--------------------------------------------------------------------------------------------------------------------------------------
+// There are 2 basic types of function declaration
+// 1. Regular fn declaration
+function walk() {
+  console.log("walk");
+}
+walk();
+// 2. Anonymous function declaration
+let run = function () {
+  console.log("run");
+};
+run();
