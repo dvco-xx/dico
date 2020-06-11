@@ -916,16 +916,139 @@ const filtered = movies
 console.log(filtered); */
 
 //--------------------------------------------------------------------------------------------------------------------------------------
-//          FUNCTIONS
+//      FUNCTIONS
 //--------------------------------------------------------------------------------------------------------------------------------------
-// There are 2 basic types of function declaration
+/* // There are 2 basic types of function declaration
 // 1. Regular fn declaration
 function walk() {
   console.log("walk");
 }
 walk();
+
 // 2. Anonymous function declaration
 let run = function () {
   console.log("run");
 };
 run();
+let move = run;
+move(); */
+
+// The "arguments" operator is used (within the for loop condition) to iterate through and compute the values of a varying number of
+// arguments passed into a function. It can work without the function accepting any parameters!!
+/* function sum(a) {
+  let total = 0;
+  for (let value of arguments) total += value;
+  return total;
+}
+console.log(sum(1, 2, 3, 4)); */
+
+// REST OPERATOR
+// Calculate the sum of items in a shopping cart
+// The rest (...args) operator also works similarly to the "argument" keyword but allows a varying no. of arguments to be passed through
+// one parameter of a function as an array of elements. It MUST be the last parameter of a function
+/* function sum(discount, ...prices) {
+  const total = prices.reduce((a, b) => a + b);
+  return total * (1 - discount);
+}
+console.log(sum(0.1, 20, 30)); */
+
+// DEFAULT PARAMETERS
+// Write a function to calculate the total interest
+/* function interest(principal, rate = 3.5, years = 5){ // When you give one value a default value, you MUST also give the rest
+//rate = rate || 3.5;
+//years = years || 5;
+
+return principal* rate / 100 * years;
+}
+console.log(interest(10000)); // pass only principal since rate and years have default values */
+
+//GETTERS AND SETTERS
+/* const person = {
+  firstName: "David",
+  lastName: "Osuchukwu",
+  get fullName() {
+    return `${person.firstName} ${person.lastName}`;
+  },
+  set fullName(value) {
+    const parts = value.split(" ");
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  },
+};
+person.fullName = "Vince Vaughn";
+console.log(person); */
+
+/* //ERROR HANDLING - a.k.a Defensive programming
+const person = {
+  firstName: "David",
+  middleName: "tha",
+  lastName: "Sexyboi",
+
+  set fullName(value) {
+    if (typeof value !== "string")
+      throw new Error("Value must be of type string!");
+
+    const parts = value.split(" ");
+    if (parts.length !== 3)
+      throw new Error("Enter a first and last name in the provided fields");
+
+    this.firstName = parts[0];
+    this.middleName = parts[1];
+    this.lastName = parts[2];
+  },
+};
+try {
+  person.fullName = "";
+} catch (e) {
+  alert(e); //more preferable to use a red label instead
+}
+console.log(person); */
+
+// A CLOSER LOOK AT THE "THIS" KEYWORD
+// When dealing with a regular function, 'this' references the global window object by default but
+// if you call a function using the 'new' operator (as with Constructors) then 'this' references a new empty object
+// 'this' with method --> object
+// 'this' with normal function --> global {window, global}
+/* const video = {
+  title: "Babushka",
+  tags: ["a", "b", "c"],
+  // play() {
+  //   console.log(this);
+  // },
+  showTags() {
+    this.tags.forEach(function (tag) {
+      console.log(this.title, tag);
+    }, this);
+  },
+};
+// video.stop = function () {
+//   console.log(this);
+// };
+//video.stop();
+
+// function playVideo() {
+//   console.log(this);
+// }
+// playVideo();
+
+// function Video(title) {
+//   this.title = title;
+//   console.log(this);
+// }
+// const v = new Video("b");
+
+video.showTags(); */
+
+//CHANGING THIS TO SELF
+const video = {
+  title: "Babushka",
+  tags: ["a", "b", "c"],
+
+  showTags() {
+    const self = this;
+    this.tags.forEach(function (tag) {
+      console.log(self.title, tag);
+    }, this);
+  },
+};
+video.showTags();
